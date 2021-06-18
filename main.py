@@ -11,8 +11,19 @@ def get_armour_pieces():
     armour_pieces_list.pop(0)
     for i in range(len(armour_pieces_list)):
         armour_pieces_list[i] = armour_pieces_list[i].split(",")
-        armour_pieces_list[i] = ArmourPiece(armour_pieces_list[i][1], armour_pieces_list[i][10::], armour_pieces_list[i][9], armour_pieces_list[i][3], armour_pieces_list[i][0])
+        armour_pieces_list[i] = ArmourPiece(armour_pieces_list[i][1], armour_pieces_list[i][10::], armour_pieces_list[i][9], int(armour_pieces_list[i][3]), armour_pieces_list[i][0])
     return armour_pieces_list
+
+def get_charms():
+    file = open("Charms.csv", "r")
+    raw_charms = file.read()
+    file.close()
+    charms_list = raw_charms.split("\n")
+    charms_list.pop(0)
+    for i in range(len(charms_list)):
+        charms_list[i] = charms_list[i].split(",")
+        charms_list[i] = ArmourPiece("Charm", charms_list[i][2::], charms_list[i][1], 0, "")
+    return charms_list
 
 def get_skills_slots():
     file = open("SkillsSlots.csv", "r")
@@ -25,10 +36,12 @@ def get_skills_slots():
 
 def main():
 
-    main_database = Database(get_armour_pieces(), get_skills_slots())
+    main_database = Database(get_armour_pieces(), get_skills_slots(), get_charms())
 
     window = Window(main_database)
+    print(main_database.skill_list[0])
     window.root.mainloop()
+
     
 
 main()

@@ -1,6 +1,6 @@
 class Database:
 
-    def __init__(self, armour_list, skills_slots_list):
+    def __init__(self, armour_list, skills_slots_list, charms_list):
         self.armour_list = armour_list
         self.head_list = []
         self.torso_list = []
@@ -19,7 +19,7 @@ class Database:
             elif armour_list[i].armour_type == "Leg":
                 self.leg_list.append(armour_list[i])
         
-        self.charms_list = []
+        self.charms_list = charms_list
 
         self.skills_slots_list = skills_slots_list
         self.skill_list = []
@@ -34,4 +34,5 @@ class Database:
                 self.two_slot_list.append(skills_slots_list[i][0])
             elif skills_slots_list[i][1] == "3":
                 self.three_slot_list.append(skills_slots_list[i][0])
+    
 
