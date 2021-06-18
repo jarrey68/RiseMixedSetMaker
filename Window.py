@@ -47,8 +47,26 @@ class Window:
         self.combo_skill_level = Combobox(self.root, textvariable = self.combo_skill_level_v, values = ["1", "2", "3", "4", "5", "6", "7"], width = 1, state = "readonly")
         self.combo_skill_level.grid(row=0, column=1, padx=5, pady=5)
 
+        self.frm_weapon_slots = Frame(self.root)
+        self.frm_weapon_slots.grid(row=0, column=2, padx=5, pady=5)
+
+        self.combo_weapon_slot_one_v = StringVar()
+        self.combo_weapon_slot_one_v.set("-")
+        self.combo_weapon_slot_one = Combobox(self.frm_weapon_slots, textvariable = self.combo_weapon_slot_one_v, values = ["-", "1", "2", "3"], width = 1, state = "readonly")
+        self.combo_weapon_slot_one.pack(side=LEFT)
+
+        self.combo_weapon_slot_two_v = StringVar()
+        self.combo_weapon_slot_two_v.set("-")
+        self.combo_weapon_slot_two = Combobox(self.frm_weapon_slots, textvariable = self.combo_weapon_slot_two_v, values = ["-", "1", "2", "3"], width = 1, state = "readonly")
+        self.combo_weapon_slot_two.pack(side=LEFT)
+
+        self.combo_weapon_slot_three_v = StringVar()
+        self.combo_weapon_slot_three_v.set("-")
+        self.combo_weapon_slot_three = Combobox(self.frm_weapon_slots, textvariable = self.combo_weapon_slot_three_v, values = ["-", "1", "2", "3"], width = 1, state = "readonly")
+        self.combo_weapon_slot_three.pack(side=LEFT)
+
         self.frm_buttons = Frame(self.root)
-        self.frm_buttons.grid(row=1, rowspan=3, column=2, sticky=NW)
+        self.frm_buttons.grid(row=1, rowspan=3, column=2, sticky=N)
 
         self.btn_add = Button(self.frm_buttons, text = "Add")
         self.btn_add.bind("<ButtonRelease>", self.add_to_list)

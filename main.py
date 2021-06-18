@@ -38,8 +38,6 @@ def main():
 
     main_database = Database(get_armour_pieces(), get_skills_slots(), get_charms())
 
-    for i in range(len(main_database.armour_list)):
-        print(main_database.armour_list[i].skills)
     window = Window(main_database)
     window.root.mainloop()
 
