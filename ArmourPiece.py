@@ -2,14 +2,25 @@ class ArmourPiece:
 
     def __init__(self, armour_type, skills, slots, defence, name):
         self.armour_type = armour_type
-        self.skills = skills
+        self.skills = []
+        for i in range(len(skills) - 1, -1, -1):
+            if skills[i] == "":
+                skills.pop(i)
+        for i in range(0, len(skills), 2):
+            self.skills.append([skills[i], skills[i+1]])
         self.slots = slots
         self.defence = defence
         self.name = name
-        self.create_possible_skill_list(skills, slots)
+        self.possible_skills_list = []
 
-    def create_possible_skill_list(self, skills, slots):
-        self.possible_skill_list = []
+        
+            
+
+            
+
+        
+
+
         
 
 

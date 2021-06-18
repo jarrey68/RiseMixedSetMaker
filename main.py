@@ -11,7 +11,7 @@ def get_armour_pieces():
     armour_pieces_list.pop(0)
     for i in range(len(armour_pieces_list)):
         armour_pieces_list[i] = armour_pieces_list[i].split(",")
-        armour_pieces_list[i] = ArmourPiece(armour_pieces_list[i][1], armour_pieces_list[i][10::], armour_pieces_list[i][9], int(armour_pieces_list[i][3]), armour_pieces_list[i][0])
+        armour_pieces_list[i] = ArmourPiece(armour_pieces_list[i][1], armour_pieces_list[i][10::], armour_pieces_list[i][9].split("-"), int(armour_pieces_list[i][3]), armour_pieces_list[i][0])
     return armour_pieces_list
 
 def get_charms():
@@ -22,7 +22,7 @@ def get_charms():
     charms_list.pop(0)
     for i in range(len(charms_list)):
         charms_list[i] = charms_list[i].split(",")
-        charms_list[i] = ArmourPiece("Charm", charms_list[i][2::], charms_list[i][1], 0, "")
+        charms_list[i] = ArmourPiece("Charm", charms_list[i][2::], charms_list[i][1].split("-"), 0, "")
     return charms_list
 
 def get_skills_slots():
@@ -38,8 +38,9 @@ def main():
 
     main_database = Database(get_armour_pieces(), get_skills_slots(), get_charms())
 
+    for i in range(len(main_database.armour_list)):
+        print(main_database.armour_list[i].skills)
     window = Window(main_database)
-    print(main_database.skill_list[0])
     window.root.mainloop()
 
     
